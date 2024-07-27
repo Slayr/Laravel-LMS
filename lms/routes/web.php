@@ -1,12 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CourseController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-use App\Http\Controllers\CourseController;
 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses');
 Route::get('/courses/create', [CourseController::class, 'create'])->name('courses.create');
@@ -20,9 +19,8 @@ Route::get('/courses/{course}/pages', [CourseController::class, 'addPages'])->na
 Route::post('/courses/{course}/pages', [CourseController::class, 'storePage'])->name('courses.storePage');
 Route::delete('/pages/{page}', [CourseController::class, 'destroyPage'])->name('courses.destroyPage');
 
-//for play course 
+// for play course
 Route::get('/courses/{course}/play', [CourseController::class, 'playCourse'])->name('courses.play');
-
 
 Route::middleware([
     'auth:sanctum',
@@ -30,6 +28,6 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return redirect()->route('courses');
     })->name('dashboard');
 });

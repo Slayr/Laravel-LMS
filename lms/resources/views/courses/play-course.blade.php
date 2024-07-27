@@ -20,17 +20,17 @@
                 <!-- Navigation buttons -->
                 <div class="flex justify-between mt-6">
                     @if($previousPage = $pages->where('id', '<', $currentPage->id)->last())
-                        <a href="{{ route('courses.play', ['course' => $course->id, 'page_id' => $previousPage->id]) }}" class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <a href="{{ route('courses.play', ['course' => $course->id, 'page_id' => $previousPage->id]) }}" class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md shadow-sm text-sm font-medium text-black hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                             Previous Page
                         </a>
                     @else
-                        <span class="inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md shadow-sm text-sm font-medium text-gray-700">
+                        <span class="inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md shadow-sm text-sm font-medium text-black">
                             Previous Page
                         </span>
                     @endif
 
                     @if($nextPage = $pages->where('id', '>', $currentPage->id)->first())
-                        <a href="{{ route('courses.play', ['course' => $course->id, 'page_id' => $nextPage->id]) }}" class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <a href="{{ route('courses.play', ['course' => $course->id, 'page_id' => $nextPage->id]) }}" class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md shadow-sm text-sm font-medium text-black hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                             Next Page
                         </a>
                     @else
@@ -39,7 +39,7 @@
                         </span>
                     @endif
 
-                    <a href="{{ route('courses') }}" class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    <a href="{{ route('courses') }}" class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md shadow-sm text-sm font-medium text-black hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                         Exit Course
                     </a>
                 </div>
