@@ -69,16 +69,24 @@ class CourseController extends Controller
     public function playCourse(Course $course, Request $request)
     {
         $pages = $course->pages;
-        $currentPageId = $request->query('page_id', $pages->first()->id); // Default to the first page
+    
+        // Check if there are any pages
+        if ($pages->isEmpty()) {
+            return redirect()->route('courses.pages', $course->id)->with('error', 'No pages available for this course.');
+        }
+    
+        // Default to the first page if no page_id is provided
+        $currentPageId = $request->query('page_id', $pages->first()->id);
         $currentPage = $pages->find($currentPageId);
-
+    
+        // Handle the case where the current page is not found
         if (!$currentPage) {
             return redirect()->route('courses.pages', $course->id)->with('error', 'Page not found.');
         }
-
+    
         return view('courses.play-course', compact('course', 'pages', 'currentPage'));
     }
-
+    
     public function destroy(Course $course)
     {
         $course->delete();
